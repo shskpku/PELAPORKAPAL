@@ -32,9 +32,9 @@
                 <nav class="hidden md:block">
                     <ul class="flex space-x-6">
                         <li><a href="index.html" class="hover:text-gold transition">Beranda</a></li>
-                        <li><a href="about.html" class="hover:text-gold transition">Tentang</a></li>
-                        <li><a href="services.html" class="hover:text-gold transition">Layanan</a></li>
-                        <li><a href="contact.html" class="hover:text-gold transition">Kontak</a></li>
+                        <li><a href="tentang.html" class="hover:text-gold transition">Tentang</a></li>
+                        <li><a href="layanan.html" class="hover:text-gold transition">Layanan</a></li>
+                        <li><a href="kontak.html" class="hover:text-gold transition">Kontak</a></li>
                     </ul>
                 </nav>
                 <button id="mobile-menu-button" class="md:hidden text-white">
@@ -44,9 +44,9 @@
             <div id="mobile-menu" class="md:hidden hidden">
                 <ul class="flex flex-col space-y-2 px-4 py-2 bg-navy">
                     <li><a href="index.html" class="hover:text-gold transition">Beranda</a></li>
-                    <li><a href="about.html" class="hover:text-gold transition">Tentang</a></li>
-                    <li><a href="services.html" class="hover:text-gold transition">Layanan</a></li>
-                    <li><a href="contact.html" class="hover:text-gold transition">Kontak</a></li>
+                    <li><a href="tentang.html" class="hover:text-gold transition">Tentang</a></li>
+                    <li><a href="layanan.html" class="hover:text-gold transition">Layanan</a></li>
+                    <li><a href="kontak.html" class="hover:text-gold transition">Kontak</a></li>
                 </ul>
             </div>
         </header>
@@ -160,7 +160,7 @@
         </footer>
     </div>
 
-<script>
+    <script>
 function submitForm(e) {
     e.preventDefault();
 
@@ -186,19 +186,24 @@ function submitForm(e) {
         return;
     }
 
+    const formData = new FormData();
+    formData.append("name", nama);
+    formData.append("email", email);
+    formData.append("perusahaan", perusahaan);
+    formData.append("password", password);
+
     fetch('https://script.google.com/macros/s/AKfycbyjkI49ovRtUe4Y5XT6VyABT6DzOzq6ztosYTI1quWXU3IG9jDuc1RAhzO7MATE2-Wm/exec', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nama, email, perusahaan, password })
+        body: formData
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.status === 'success') {
+    .then(res => res.text())
+    .then(responseText => {
+        if (responseText.toLowerCase().includes("sukses") || responseText.toLowerCase().includes("success")) {
             alert("Akun berhasil dibuat!");
             document.getElementById('registerForm').reset();
             window.location.href = 'login.html';
         } else {
-            alert("Gagal menyimpan data: " + data.message);
+            alert("Gagal menyimpan data: " + responseText);
         }
     })
     .catch(error => {
@@ -228,4 +233,3 @@ function togglePasswordVisibility() {
 </script>
 </body>
 </html>
-
