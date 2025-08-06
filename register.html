@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PelaporKapal - Daftar Akun</title>
+    <link href="pelapor.png" rel="icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#001f3f',
+                        gold: '#FFD700',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="flex flex-col min-h-screen">
+        <!-- Header -->
+        <header class="bg-navy text-white shadow-md">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <img src="pelapor.png" class="h-10 w-10">
+                    <h1 class="text-xl font-bold">PelaporKapal</h1>
+                </div>
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-6">
+                        <li><a href="index.html" class="hover:text-gold transition">Beranda</a></li>
+                        <li><a href="about.html" class="hover:text-gold transition">Tentang</a></li>
+                        <li><a href="services.html" class="hover:text-gold transition">Layanan</a></li>
+                        <li><a href="contact.html" class="hover:text-gold transition">Kontak</a></li>
+                    </ul>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden">
+                <ul class="flex flex-col space-y-2 px-4 py-2 bg-navy">
+                    <li><a href="index.html" class="hover:text-gold transition">Beranda</a></li>
+                    <li><a href="about.html" class="hover:text-gold transition">Tentang</a></li>
+                    <li><a href="services.html" class="hover:text-gold transition">Layanan</a></li>
+                    <li><a href="contact.html" class="hover:text-gold transition">Kontak</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-xl border border-gray-200">
+                <div class="text-center">
+                    <img src="pelapor.png" class="mx-auto h-20 w-20 mb-4">
+                    <h2 class="mt-2 text-2xl font-extrabold text-gray-900">Daftar Akun Baru</h2>
+                    <p class="mt-2 text-sm text-gray-600">Buat akun untuk mulai menggunakan layanan kami</p>
+                </div>
+                
+                <!-- Registration Form -->
+                <form class="mt-8 space-y-6">
+                    <div class="rounded-md shadow-sm space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-user text-gray-400"></i>
+                                </div>
+                                <input id="name" name="name" type="text" required 
+                                    class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md 
+                                    placeholder-gray-400 focus:outline-none focus:ring-gold focus:border-gold sm:text-sm"
+                                    placeholder="Nama Lengkap">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-envelope text-gray-400"></i>
+                                </div>
+                                <input id="email" name="email" type="email" required 
+                                    class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md 
+                                    placeholder-gray-400 focus:outline-none focus:ring-gold focus:border-gold sm:text-sm"
+                                    placeholder="email@contoh.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-lock text-gray-400"></i>
+                                </div>
+                                <input id="password" name="password" type="password" required 
+                                    class="appearance-none block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-md 
+                                    placeholder-gray-400 focus:outline-none focus:ring-gold focus:border-gold sm:text-sm"
+                                    placeholder="Password (min 8 karakter)">
+                                <span onclick="togglePasswordVisibility()" class="absolute right-3 top-2.5 text-gray-500 cursor-pointer">
+                                    <i id="eyeIcon" class="fas fa-eye"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Konfirmasi Password</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-lock text-gray-400"></i>
+                                </div>
+                                <input id="confirm-password" name="confirm-password" type="password" required 
+                                    class="appearance-none block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-md 
+                                    placeholder-gray-400 focus:outline-none focus:ring-gold focus:border-gold sm:text-sm"
+                                    placeholder="Ulangi Password">
+                            </div>
+                        </div>
+                    <div class="flex items-center">
+                        <input id="terms" name="terms" type="checkbox" required
+                            class="h-4 w-4 text-gold focus:ring-gold border-gray-300 rounded">
+                        <label for="terms" class="ml-2 block text-sm text-gray-700">
+                            Saya menyetujui <a href="#" class="text-gold hover:text-gold">syarat dan ketentuan</a>
+                        </label>
+                    </div>
+
+                    <div>
+                        <button type="submit" 
+                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-navy 
+                            hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold transition btn-gold-gradient">
+                            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                                <i class="fas fa-user-plus text-white"></i>
+                            </span>
+                            Daftar
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-4">
+                    <p class="text-sm text-gray-600">
+                        Sudah punya akun? 
+                        <a href="login.html" class="font-medium text-gold hover:text-gold">
+                            Masuk di sini
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-navy text-white py-6">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-2">
+                            <img src="logo-shsk.png" alt="Logo kecil PelaporanKapal" class="h-6 w-6">
+                            <span class="text-sm text-center md:text-left">© 2025 PelaporKapal - Seksi SHSK KSOP Pekanbaru.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Password visibility toggle
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const confirmInput = document.getElementById('confirm-password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                confirmInput.type = 'text';
+                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                confirmInput.type = 'password';
+                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>
