@@ -31,9 +31,9 @@
                     <h1 class="text-xl font-bold">PelaporKapal</h1>
                 </div>
                 <div class="text-sm mt-2 md:mt-0">
-                    <span id="user-name" class="font-medium">Nama Lengkap: -</span><br>
-                    <span id="user-email" class="font-medium">Email: -</span><br>
-                    <span id="user-perusahaan" class="font-medium">Perusahaan: -</span>
+                    <span id="userNama" class="font-medium">Nama Lengkap: -</span><br>
+                    <span id="userEmail" class="font-medium">Email: -</span><br>
+                    <span id="userPerusahaan" class="font-medium">Perusahaan: -</span>
                 </div>
                 <div class="flex gap-4 mt-2 md:mt-0">
                     <a href="logout.html" class="px-4 py-2 bg-red text-white font-medium rounded-lg hover:bg-gold transition">Logout</a>
@@ -145,15 +145,16 @@
     <!-- Script untuk mengambil data user dari localStorage -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const userName = localStorage.getItem("userName") || "Nama tidak ditemukan";
+            const userName = localStorage.getItem("userNama") || "Nama tidak ditemukan";
             const userEmail = localStorage.getItem("userEmail") || "Email tidak ditemukan";
             const userCompany = localStorage.getItem("userPerusahaan") || "Perusahaan tidak ditemukan";
 
-            document.getElementById("user-name").textContent = "Nama Lengkap: " + userName;
-            document.getElementById("user-email").textContent = "Email: " + userEmail;
-            document.getElementById("user-perusahaan").textContent = "Perusahaan: " + userPerusahaan;
+            document.getElementById("userNama").textContent = "Nama Lengkap: " + userNama;
+            document.getElementById("userEmail").textContent = "Email: " + userEmail;
+            document.getElementById("userPerusahaan").textContent = "Perusahaan: " + userPerusahaan;
         });
     </script>
 </body>
 </html>
+
 
