@@ -125,6 +125,8 @@
                   class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md 
                          placeholder-gray-400 focus:outline-none focus:ring-gold focus:border-gold sm:text-sm"
                   placeholder="Password">
+                   <span onclick="togglePasswordVisibility()" class="absolute right-3 top-2.5 text-gray-500 cursor-pointer">
+                    <i id="eyeIcon" class="fas fa-eye"></i>
               </div>
             </div>
           </div>
@@ -183,6 +185,17 @@
       const mobileMenu = document.getElementById('mobile-menu');
       mobileMenu.classList.toggle('hidden');
     });
+
+    // Password visibility toggle
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+
+    const isHidden = passwordInput.type === 'password';
+    passwordInput.type = isHidden ? 'text' : 'password';
+    eyeIcon.classList.toggle('fa-eye');
+    eyeIcon.classList.toggle('fa-eye-slash');
+}
   </script>
 </body>
 </html>
