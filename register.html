@@ -143,6 +143,7 @@
                             class="h-4 w-4 text-gold focus:ring-gold border-gray-300 rounded">
                         <label for="terms" class="ml-2 block text-sm text-gray-700">
                             Saya menyetujui <a href="#" class="text-gold hover:text-gold">syarat dan ketentuan</a>
+                            <a href="syarat-ketentuan.html" class="text-blue-600 hover:underline" target="_blank"></a>
                         </label>
                     </div>
 
@@ -165,7 +166,6 @@
 
                     </div>
                 </form>
-
                 <div class="text-center mt-4">
                     <p class="text-sm text-gray-600">
                         Sudah punya akun? 
@@ -237,11 +237,19 @@ function submitForm(e) {
         return;
     }
 
-    if (password !== confirmPassword) {
-        showToast("Password dan Konfirmasi Password tidak cocok.", false);
-        resetButtonState();
-        return;
-    }
+if (password !== confirmPassword) {
+    showToast("Password dan Konfirmasi Password tidak cocok.", false);
+    resetButtonState();
+    return;
+}
+
+// Tambahan validasi terms
+const termsChecked = document.getElementById('terms').checked;
+if (!termsChecked) {
+    showToast("Anda harus menyetujui syarat dan ketentuan untuk melanjutkan.", false);
+    resetButtonState();
+    return;
+}
 
     const formData = new FormData();
     formData.append("name", nama);
