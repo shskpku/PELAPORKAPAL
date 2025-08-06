@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PelaporKapal - Login</title>
-  <link href="pelapor.png" rel="icon">
+  <link href="pelapor.png" rel="icon" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script>
     tailwind.config = {
       theme: {
@@ -18,46 +18,6 @@
         }
       }
     }
-
-    function confirmLogout() {
-      const confirmation = confirm("Apakah Anda yakin ingin logout?");
-      if (confirmation) {
-        localStorage.clear();
-        window.location.href = "index.html";
-      }
-    }
-
-    function handleLogin(event) {
-      event.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-
-      if (!email || !password) {
-        alert("Harap isi email dan password.");
-        return;
-      }
-
-      // Ganti URL berikut dengan Web App URL kamu
-      const scriptURL = "https://script.google.com/macros/s/AKfycbyjkI49ovRtUe4Y5XT6VyABT6DzOzq6ztosYTI1quWXU3IG9jDuc1RAhzO7MATE2-Wm/exec";
-      const url = `${scriptURL}?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
-
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          if (data.success) {
-            localStorage.setItem("userNama", data.nama);
-            localStorage.setItem("userEmail", data.email);
-            localStorage.setItem("userPerusahaan", data.perusahaan);
-            window.location.href = "form-permohonan.html";
-          } else {
-            alert("Email atau password salah.");
-          }
-        })
-        .catch(error => {
-          console.error("Login error:", error);
-          alert("Terjadi kesalahan saat login.");
-        });
-    }
   </script>
 </head>
 <body class="bg-gray-100 min-h-screen">
@@ -66,7 +26,7 @@
     <header class="bg-navy text-white shadow-md">
       <div class="container mx-auto px-4 py-4 flex justify-between items-center">
         <div class="flex items-center space-x-2">
-          <img src="pelapor.png" class="h-10 w-10">
+          <img src="pelapor.png" class="h-10 w-10" />
           <h1 class="text-xl font-bold">PelaporKapal</h1>
         </div>
         <nav class="hidden md:block">
@@ -95,7 +55,7 @@
     <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-xl border border-gray-200">
         <div class="text-center">
-          <img src="pelapor.png" class="mx-auto h-20 w-20 mb-4">
+          <img src="pelapor.png" class="mx-auto h-20 w-20 mb-4" />
           <h2 class="mt-2 text-2xl font-extrabold text-gray-900">Login</h2>
           <p class="mt-2 text-sm text-gray-600">Silakan masuk dengan akun Anda</p>
         </div>
@@ -115,6 +75,7 @@
                   placeholder="email@contoh.com">
               </div>
             </div>
+
             <div>
               <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
               <div class="relative">
@@ -122,11 +83,12 @@
                   <i class="fas fa-lock text-gray-400"></i>
                 </div>
                 <input id="password" name="password" type="password" required
-                  class="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md 
+                  class="appearance-none block w-full pl-10 pr-10 py-2 border border-gray-300 rounded-md 
                          placeholder-gray-400 focus:outline-none focus:ring-gold focus:border-gold sm:text-sm"
                   placeholder="Password">
-                   <span onclick="togglePasswordVisibility()" class="absolute right-3 top-2.5 text-gray-500 cursor-pointer">
-                    <i id="eyeIcon" class="fas fa-eye"></i>
+                <span onclick="togglePasswordVisibility()" class="absolute right-3 top-2.5 text-gray-500 cursor-pointer">
+                  <i id="eyeIcon" class="fas fa-eye"></i>
+                </span>
               </div>
             </div>
           </div>
@@ -135,9 +97,7 @@
             <div class="flex items-center">
               <input id="remember-me" name="remember-me" type="checkbox"
                 class="h-4 w-4 text-gold focus:ring-gold border-gray-300 rounded">
-              <label for="remember-me" class="ml-2 block text-sm text-gray-700">
-                Ingat saya
-              </label>
+              <label for="remember-me" class="ml-2 block text-sm text-gray-700">Ingat saya</label>
             </div>
             <div class="text-sm">
               <a href="#" class="font-medium text-gold hover:text-gold">Lupa password?</a>
@@ -145,13 +105,16 @@
           </div>
 
           <div>
-            <button type="submit"
-              class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-navy 
+            <button id="loginButton" type="submit"
+              class="group relative w-full flex justify-center items-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-navy 
                      hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gold transition btn-gold-gradient">
               <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                 <i class="fas fa-sign-in-alt text-white"></i>
               </span>
-              Masuk
+              <span id="loginButtonText">Masuk</span>
+              <span id="loginSpinner" class="hidden ml-2 animate-spin">
+                <i class="fas fa-circle-notch"></i>
+              </span>
             </button>
           </div>
         </form>
@@ -163,6 +126,9 @@
         </div>
       </div>
     </main>
+
+    <!-- Notifikasi Toast -->
+    <div id="toast" class="fixed top-5 right-5 z-50 hidden px-4 py-2 rounded-md text-white shadow-lg"></div>
 
     <!-- Footer -->
     <footer class="bg-navy text-white py-6">
@@ -187,15 +153,71 @@
     });
 
     // Password visibility toggle
-function togglePasswordVisibility() {
-    const passwordInput = document.getElementById('password');
-    const eyeIcon = document.getElementById('eyeIcon');
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('password');
+      const eyeIcon = document.getElementById('eyeIcon');
+      const isHidden = passwordInput.type === 'password';
+      passwordInput.type = isHidden ? 'text' : 'password';
+      eyeIcon.classList.toggle('fa-eye');
+      eyeIcon.classList.toggle('fa-eye-slash');
+    }
 
-    const isHidden = passwordInput.type === 'password';
-    passwordInput.type = isHidden ? 'text' : 'password';
-    eyeIcon.classList.toggle('fa-eye');
-    eyeIcon.classList.toggle('fa-eye-slash');
-}
+    // Tampilkan toast notifikasi
+    function showToast(message, success = true) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.className = `fixed top-5 right-5 z-50 px-4 py-2 rounded-md text-white shadow-lg transition ${
+        success ? 'bg-green-600' : 'bg-red-600'
+      }`;
+      toast.classList.remove('hidden');
+      setTimeout(() => toast.classList.add('hidden'), 3000);
+    }
+
+    function handleLogin(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!email || !password) {
+        showToast("Harap isi email dan password.", false);
+        return;
+      }
+
+      const loginButton = document.getElementById('loginButton');
+      const loginText = document.getElementById('loginButtonText');
+      const spinner = document.getElementById('loginSpinner');
+
+      // Loading Spinner
+      loginButton.disabled = true;
+      spinner.classList.remove('hidden');
+      loginText.textContent = 'Memproses...';
+
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyjkI49ovRtUe4Y5XT6VyABT6DzOzq6ztosYTI1quWXU3IG9jDuc1RAhzO7MATE2-Wm/exec";
+      const url = `${scriptURL}?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            localStorage.setItem("userNama", data.nama);
+            localStorage.setItem("userEmail", data.email);
+            localStorage.setItem("userPerusahaan", data.perusahaan);
+            showToast("Login berhasil!");
+            setTimeout(() => window.location.href = "form-permohonan.html", 1500);
+          } else {
+            showToast("Email atau password salah.", false);
+          }
+        })
+        .catch(error => {
+          console.error("Login error:", error);
+          showToast("Terjadi kesalahan saat login.", false);
+        })
+        .finally(() => {
+          loginButton.disabled = false;
+          spinner.classList.add('hidden');
+          loginText.textContent = 'Masuk';
+        });
+    }
   </script>
 </body>
 </html>
