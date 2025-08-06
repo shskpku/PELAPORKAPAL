@@ -19,6 +19,18 @@
       }
     }
   </script>
+  <style>
+        .btn-gold-gradient {
+            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+        }
+        .btn-gold-gradient:hover {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+        }
+        .active {
+            color: #FFD700; /* Gold color for active link */
+            font-weight: bold; /* Bold text for active link */
+        }
+    </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
   <div class="flex flex-col min-h-screen">
@@ -31,7 +43,7 @@
         </div>
         <nav class="hidden md:block">
           <ul class="flex space-x-6">
-            <li><a href="index.html" class="hover:text-gold transition">Beranda</a></li>
+            <li><a href="index.html" class="active hover:text-gold transition">Beranda (Login)</a></li>
             <li><a href="tentang.html" class="hover:text-gold transition">Tentang</a></li>
             <li><a href="layanan.html" class="hover:text-gold transition">Layanan</a></li>
             <li><a href="kontak.html" class="hover:text-gold transition">Kontak</a></li>
@@ -43,7 +55,7 @@
       </div>
       <div id="mobile-menu" class="md:hidden hidden">
         <ul class="flex flex-col space-y-2 px-4 py-2 bg-navy">
-          <li><a href="index.html" class="hover:text-gold transition">Beranda</a></li>
+          <li><a href="index.html" class="active hover:text-gold transition">Beranda (Login)</a></li>
           <li><a href="tentang.html" class="hover:text-gold transition">Tentang</a></li>
           <li><a href="layanan.html" class="hover:text-gold transition">Layanan</a></li>
           <li><a href="kontak.html" class="hover:text-gold transition">Kontak</a></li>
