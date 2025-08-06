@@ -31,10 +31,19 @@
                     <h1 class="text-xl font-bold">PelaporKapal</h1>
                 </div>
                 <div class="text-sm mt-2 md:mt-0">
-                    <span id="data-nama" class="font-medium">Nama Lengkap: -</span><br>
-                    <span id="data-email" class="font-medium">Email: -</span><br>
-                    <span id="data-perusahaan" class="font-medium">Perusahaan: -</span>
-                </div>
+    <div>
+        <i class="fas fa-user text-gold mr-1"></i>
+        <span id="data.nama" class="font-medium"></span>
+    </div>
+    <div>
+        <i class="fas fa-envelope text-gold mr-1"></i>
+        <span id="data.email" class="font-medium"></span>
+    </div>
+    <div>
+        <i class="fas fa-building text-gold mr-1"></i>
+        <span id="data.perusahaan" class="font-medium"></span>
+    </div>
+</div>
                 <div class="flex gap-4 mt-2 md:mt-0">
                     <a href="logout.html" class="px-4 py-2 bg-red text-white font-medium rounded-lg hover:bg-gold transition">Logout</a>
                 </div>
@@ -144,21 +153,15 @@
 
     <!-- Script untuk mengambil data user dari localStorage -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const userName = localStorage.getItem("userNama") || "Nama tidak ditemukan";
-            const userEmail = localStorage.getItem("userEmail") || "Email tidak ditemukan";
-            const userCompany = localStorage.getItem("userPerusahaan") || "Perusahaan tidak ditemukan";
+    document.addEventListener("DOMContentLoaded", function () {
+        const userNama = localStorage.getItem("userNama") || "Nama tidak ditemukan";
+        const userEmail = localStorage.getItem("userEmail") || "Email tidak ditemukan";
+        const userPerusahaan = localStorage.getItem("userPerusahaan") || "Perusahaan tidak ditemukan";
 
-            document.getElementById("data-nama").textContent = "Nama Lengkap: " + userNama;
-            document.getElementById("data-email").textContent = "Email: " + userEmail;
-            document.getElementById("data-perusahaan").textContent = "Perusahaan: " + userPerusahaan;
-        });
-    </script>
+        document.getElementById("data.nama").textContent =userNama;
+        document.getElementById("data.email").textContent =userEmail;
+        document.getElementById("data.perusahaan").textContent =userPerusahaan;
+    });
+</script>
 </body>
 </html>
-
-
-
-
-
-
