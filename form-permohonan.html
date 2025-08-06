@@ -31,9 +31,9 @@
                     <h1 class="text-xl font-bold">PelaporKapal</h1>
                 </div>
                 <div class="text-sm mt-2 md:mt-0">
-                    <span id="userNama" class="font-medium">Nama Lengkap: -</span><br>
-                    <span id="userEmail" class="font-medium">Email: -</span><br>
-                    <span id="userPerusahaan" class="font-medium">Perusahaan: -</span>
+                    <span id="user-Nama" class="font-medium">Nama Lengkap: -</span><br>
+                    <span id="user-Email" class="font-medium">Email: -</span><br>
+                    <span id="user-Perusahaan" class="font-medium">Perusahaan: -</span>
                 </div>
                 <div class="flex gap-4 mt-2 md:mt-0">
                     <a href="logout.html" class="px-4 py-2 bg-red text-white font-medium rounded-lg hover:bg-gold transition">Logout</a>
@@ -149,12 +149,13 @@
             const userEmail = localStorage.getItem("userEmail") || "Email tidak ditemukan";
             const userCompany = localStorage.getItem("userPerusahaan") || "Perusahaan tidak ditemukan";
 
-            document.getElementById("userNama").textContent = "Nama Lengkap: " + userNama;
-            document.getElementById("userEmail").textContent = "Email: " + userEmail;
-            document.getElementById("userPerusahaan").textContent = "Perusahaan: " + userPerusahaan;
+            document.getElementById("user-Nama").textContent = "Nama Lengkap: " + user-Nama;
+            document.getElementById("user-Email").textContent = "Email: " + user-Email;
+            document.getElementById("user-Perusahaan").textContent = "Perusahaan: " + user-Perusahaan;
         });
     </script>
 </body>
 </html>
+
 
 
