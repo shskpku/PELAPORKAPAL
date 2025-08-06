@@ -185,6 +185,19 @@
       setTimeout(() => toast.classList.add('hidden'), 3000);
     }
 
+    // Cek apakah data disimpan dan isi ulang field
+document.addEventListener("DOMContentLoaded", () => {
+  const rememberedEmail = localStorage.getItem("rememberedEmail");
+  const rememberedPassword = localStorage.getItem("rememberedPassword");
+  const rememberMe = localStorage.getItem("rememberMe") === "true";
+
+  if (rememberMe) {
+    document.getElementById("email").value = rememberedEmail || "";
+    document.getElementById("password").value = rememberedPassword || "";
+    document.getElementById("remember-me").checked = true;
+  }
+});
+
     function handleLogin(event) {
       event.preventDefault();
       const email = document.getElementById('email').value.trim();
@@ -206,6 +219,19 @@
 
       const scriptURL = "https://script.google.com/macros/s/AKfycbyjkI49ovRtUe4Y5XT6VyABT6DzOzq6ztosYTI1quWXU3IG9jDuc1RAhzO7MATE2-Wm/exec";
       const url = `${scriptURL}?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+
+      const remember = document.getElementById('remember-me').checked;
+
+if (remember) {
+  localStorage.setItem("rememberedEmail", email);
+  localStorage.setItem("rememberedPassword", password);
+  localStorage.setItem("rememberMe", "true");
+} else {
+  localStorage.removeItem("rememberedEmail");
+  localStorage.removeItem("rememberedPassword");
+  localStorage.setItem("rememberMe", "false");
+}
+
 
       fetch(url)
         .then(res => res.json())
