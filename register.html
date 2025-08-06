@@ -178,12 +178,12 @@ function submitForm(e) {
 
     const nama = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
+    const perusahaan = document.getElementById('perusahaan').value.trim();
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
-    const perusahaan = "PENGGUNA UMUM";
 
     // Validasi
-    if (!nama || !email || !password || !confirmPassword) {
+    if (!nama || !email || !perusahaan || !password || !confirmPassword) {
         alert("Harap isi semua field.");
         return;
     }
