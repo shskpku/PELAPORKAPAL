@@ -37,10 +37,19 @@
                     <h1 class="text-xl font-bold">PelaporKapal</h1>
                 </div>
                 <div class="text-sm mt-2 md:mt-0">
-                    <span id="user-name" class="font-medium">Nama Lengkap: John Doe</span><br>
-                    <span id="user-email" class="font-medium">Email: johndoe@example.com</span><br>
-                    <span id="user-company" class="font-medium">Perusahaan: PT. Contoh</span>
-                </div>
+    <div>
+        <i class="fas fa-user text-gold mr-1"></i>
+        <span id="data_nama" class="font-medium"></span>
+    </div>
+    <div>
+        <i class="fas fa-envelope text-gold mr-1"></i>
+        <span id="data_email" class="font-medium"></span>
+    </div>
+    <div>
+        <i class="fas fa-building text-gold mr-1"></i>
+        <span id="data_perusahaan" class="font-medium"></span>
+    </div>
+</div>
             </div>
         </header>
 
@@ -48,7 +57,7 @@
         <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div class="max-w-md md:max-w-lg w-full space-y-8 bg-white p-8 rounded-lg shadow-xl border border-gray-200">
                 <div class="text-center">
-                    <h2 class="mt-2 text-2xl font-extrabold text-gray-900">Apakah Anda Yakin Keluar Dari Halaman Ini?</h2>
+                    <h2 class="mt-2 text-2xl font-extrabold text-gray-900">Apakah <span id="data_nama_h2"></span> yakin keluar dari halaman ini?</h2>
                     <p class="mt-2 text-sm text-gray-600">Formulir Permohonan Laporan Pemeriksaan Kapal</p>
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 justify-center">
@@ -72,5 +81,18 @@
             </div>
         </footer>
     </div>
+    <!-- Script untuk mengambil data user dari localStorage -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const userNama = localStorage.getItem("userNama") || "Nama tidak ditemukan";
+        const userEmail = localStorage.getItem("userEmail") || "Email tidak ditemukan";
+        const userPerusahaan = localStorage.getItem("userPerusahaan") || "Perusahaan tidak ditemukan";
+
+        document.getElementById("data_nama").textContent =userNama;
+        document.getElementById("data_email").textContent =userEmail;
+        document.getElementById("data_perusahaan").textContent =userPerusahaan;
+        document.getElementById("data_nama_h2").textContent =userNama;
+    });
+</script>
 </body>
 </html>
