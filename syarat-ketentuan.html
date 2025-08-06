@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syarat dan Ketentuan - PelaporKapal</title>
+    <link href="pelapor.png" rel="icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #001f3f; /* Navy background for the entire page */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-5">
+        <header class="text-center mb-10">
+            <div class="flex items-center justify-center">
+                <img src="pelapor.png" alt="Logo PelaporKapal" class="h-12 mr-3"> <!-- Logo added here -->
+                <h1 class="text-3xl font-bold text-white">Syarat dan Ketentuan</h1>
+            </div>
+            <p class="text-gray-300">Aplikasi PelaporKapal</p>
+        </header>
+
+        <section class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-2xl font-semibold mb-4 text-navy">Tujuan Aplikasi</h2>
+            <p class="mb-4">Aplikasi PelaporKapal terfokus pada sertifikasi kapal, khususnya dalam menyediakan laporan pemeriksaan kapal. Dengan aplikasi ini, pengguna dapat dengan mudah mengakses dan mendapatkan laporan hasil pemeriksaan kapal yang diperlukan untuk memastikan kepatuhan terhadap standar sertifikasi yang berlaku.</p>
+        </section>
+
+        <section class="bg-gray-100 p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-2xl font-semibold mb-4 text-navy">Penggunaan Data Laporan</h2>
+            <p class="mb-4">Data laporan yang sudah diterima melalui aplikasi ini tidak boleh digunakan sembarangan atau disalahgunakan. Pengguna diharapkan untuk menjaga kerahasiaan dan integritas informasi yang diperoleh, serta menggunakan data tersebut hanya untuk tujuan yang sah dan sesuai dengan hukum yang berlaku.</p>
+        </section>
+
+        <section class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4 text-navy">1. Penerimaan Syarat dan Ketentuan</h2>
+            <p class="mb-4">Dengan menggunakan aplikasi PelaporKapal, Anda setuju untuk mematuhi syarat dan ketentuan yang ditetapkan di halaman ini. Jika Anda tidak setuju dengan syarat dan ketentuan ini, harap tidak menggunakan aplikasi ini.</p>
+
+            <h2 class="text-2xl font-semibold mb-4 text-navy">2. Penggunaan Aplikasi</h2>
+            <p class="mb-4">Aplikasi PelaporKapal dirancang untuk membantu pengguna dalam mendapatkan laporan pemeriksaan kapal. Pengguna setuju untuk menggunakan aplikasi ini hanya untuk tujuan yang sah dan sesuai dengan hukum yang berlaku.</p>
+
+            <h2 class="text-2xl font-semibold mb-4 text-navy">3. Akun Pengguna</h2>
+            <p class="mb-4">Pengguna diharuskan untuk membuat akun untuk menggunakan aplikasi ini. Pengguna bertanggung jawab untuk menjaga kerahasiaan informasi akun dan kata sandi mereka. Setiap aktivitas yang dilakukan melalui akun pengguna adalah tanggung jawab pengguna.</p>
+
+            <h2 class="text-2xl font-semibold mb-4 text-navy">4. Kebijakan Privasi</h2>
+            <p class="mb-4">Kami menghargai privasi Anda. Informasi yang dikumpulkan melalui aplikasi ini akan digunakan sesuai dengan kebijakan privasi kami. Harap baca kebijakan privasi kami untuk memahami bagaimana kami mengelola informasi pribadi Anda.</p>
+
+            <h2 class="text-2xl font-semibold mb-4 text-navy">5. Pembatasan Tanggung Jawab</h2>
+            <p class="mb-4">Aplikasi ini disediakan "sebagaimana adanya" tanpa jaminan apapun. Kami tidak bertanggung jawab atas kerugian atau kerusakan yang timbul dari penggunaan aplikasi ini.</p>
+
+            <h2 class="text-2xl font-semibold mb-4 text-navy">6. Perubahan Syarat dan Ketentuan</h2>
+            <p class="mb-4">Kami berhak untuk mengubah syarat dan ketentuan ini kapan saja. Perubahan akan diberitahukan melalui aplikasi atau melalui email. Penggunaan aplikasi setelah perubahan dianggap sebagai penerimaan syarat dan ketentuan yang baru.</p>
+
+            <h2 class="text-2xl font-semibold mb-4 text-navy">7. Kontak</h2>
+            <p class="mb-4">Jika Anda memiliki pertanyaan atau komentar mengenai syarat dan ketentuan ini, silakan hubungi kami di <a href="mailto:support@pelaporkapal.com" class="text-gold hover:underline">support@pelaporkapal.com</a>.</p>
+        </section>
+
+        <!-- Tombol Mengerti -->
+        <div class="mt-6 text-center">
+            <button onclick="closeWindow()" class="inline-block px-6 py-2 bg-gold text-white rounded-md hover:bg-opacity-90 transition">
+                Mengerti
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function closeWindow() {
+            window.close(); // Menutup jendela saat tombol diklik
+            // Jika tidak bisa menutup, arahkan kembali ke halaman register
+            window.location.href = "register.html"; 
+        }
+    </script>
+</body>
+</html>
