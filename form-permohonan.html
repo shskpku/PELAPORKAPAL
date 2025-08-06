@@ -31,9 +31,9 @@
                     <h1 class="text-xl font-bold">PelaporKapal</h1>
                 </div>
                 <div class="text-sm mt-2 md:mt-0">
-                    <span id="user-name" class="font-medium">Nama Lengkap: John Doe</span><br>
-                    <span id="user-email" class="font-medium">Email: johndoe@example.com</span><br>
-                    <span id="user-company" class="font-medium">Perusahaan: PT. Contoh</span>
+                    <span id="user-name" class="font-medium">Nama Lengkap: -</span><br>
+                    <span id="user-email" class="font-medium">Email: -</span><br>
+                    <span id="user-company" class="font-medium">Perusahaan: -</span>
                 </div>
                 <div class="flex gap-4 mt-2 md:mt-0">
                     <a href="logout.html" class="px-4 py-2 bg-red text-white font-medium rounded-lg hover:bg-gold transition">Logout</a>
@@ -141,5 +141,18 @@
             </div>
         </footer>
     </div>
+
+    <!-- Script untuk mengambil data user dari localStorage -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userName = localStorage.getItem("userName") || "Nama tidak ditemukan";
+            const userEmail = localStorage.getItem("userEmail") || "Email tidak ditemukan";
+            const userCompany = localStorage.getItem("userCompany") || "Perusahaan tidak ditemukan";
+
+            document.getElementById("user-name").textContent = "Nama Lengkap: " + userName;
+            document.getElementById("user-email").textContent = "Email: " + userEmail;
+            document.getElementById("user-company").textContent = "Perusahaan: " + userCompany;
+        });
+    </script>
 </body>
 </html>
