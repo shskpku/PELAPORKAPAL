@@ -24,6 +24,10 @@
             color: #FFD700; /* Gold color for active link */
             font-weight: bold; /* Bold text for active link */
         }
+        <!-- tambahkan di dalam tag <head> -->
+  .toast {
+    transition: opacity 0.3s ease-in-out;
+  }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
@@ -69,12 +73,23 @@
                             <p class="mb-4"><i class="fas fa-envelope mr-2 text-gold"></i> shskpku@gmail.com</p>
                         </div>
                         <div>
-                            <form class="space-y-4">
-                                <input type="text" placeholder="Nama Anda" class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gold">
-                                <input type="email" placeholder="Email Anda" class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gold">
-                                <textarea placeholder="Pesan Anda" rows="4" class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gold"></textarea>
-                                <button type="submit" class="px-6 py-2 bg-gold text-navy font-medium rounded hover:bg-yellow-500 transition">Kirim Pesan</button>
-                            </form>
+                            <!-- Ubah tag <form> ini -->
+<form id="contactForm" onsubmit="kirimPesan(event)" class="space-y-4">
+  <input id="nama" name="nama" type="text" placeholder="Nama Anda"
+    class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gold" required>
+  <input id="email" name="email" type="email" placeholder="Email Anda"
+    class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gold" required>
+  <textarea id="pesan" name="pesan" rows="4" placeholder="Pesan Anda"
+    class="w-full px-4 py-2 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gold" required></textarea>
+
+  <button type="submit" id="kirimButton"
+    class="px-6 py-2 bg-gold text-navy font-medium rounded hover:bg-yellow-500 transition flex items-center justify-center space-x-2">
+    <span id="buttonText">Kirim Pesan</span>
+    <span id="spinner" class="hidden animate-spin">
+      <i class="fas fa-circle-notch"></i>
+    </span>
+  </button>
+</form>
                         </div>
                     </div>
                 </div>
@@ -95,13 +110,76 @@
             </div>
         </footer>
     </div>
+<!-- Toast -->
+<div id="toast" class="toast fixed top-5 right-5 hidden px-4 py-2 rounded-md text-white shadow-lg z-50"></div>
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
+<script>
+  // Toggle menu mobile
+  document.getElementById('mobile-menu-button').addEventListener('click', function () {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+
+  function showToast(message, success = true) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.className = `toast fixed top-5 right-5 px-4 py-2 rounded-md text-white shadow-lg z-50 ${
+      success ? 'bg-green-600' : 'bg-red-600'
+    }`;
+    toast.classList.remove('hidden');
+    setTimeout(() => toast.classList.add('hidden'), 3000);
+  }
+
+  function kirimPesan(event) {
+    event.preventDefault();
+
+    const nama = document.getElementById('nama').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const pesan = document.getElementById('pesan').value.trim();
+    const button = document.getElementById('kirimButton');
+    const buttonText = document.getElementById('buttonText');
+    const spinner = document.getElementById('spinner');
+
+    if (!nama || !email || !pesan) {
+      showToast("Harap lengkapi semua field.", false);
+      return;
+    }
+
+    // Spinner on
+    button.disabled = true;
+    buttonText.textContent = "Mengirim...";
+    spinner.classList.remove("hidden");
+
+    const url = "https://script.google.com/macros/s/AKfycbyjkI49ovRtUe4Y5XT6VyABT6DzOzq6ztosYTI1quWXU3IG9jDuc1RAhzO7MATE2-Wm/exec";
+
+    const formData = new FormData();
+    formData.append("nama", nama);
+    formData.append("email", email);
+    formData.append("pesan", pesan);
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then(res => res.text())
+      .then(res => {
+        if (res.toLowerCase().includes("sukses")) {
+          showToast("Pesan berhasil dikirim!");
+          document.getElementById('contactForm').reset();
+        } else {
+          showToast("Gagal mengirim pesan.", false);
+        }
+      })
+      .catch(err => {
+        console.error("Kesalahan:", err);
+        showToast("Terjadi kesalahan.", false);
+      })
+      .finally(() => {
+        button.disabled = false;
+        buttonText.textContent = "Kirim Pesan";
+        spinner.classList.add("hidden");
+      });
+  }
+</script>
 </body>
 </html>
+
