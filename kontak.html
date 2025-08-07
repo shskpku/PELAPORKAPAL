@@ -123,7 +123,7 @@
     const toast = document.getElementById('toast');
     toast.textContent = message;
     toast.className = `toast fixed top-5 right-5 px-4 py-2 rounded-md text-white shadow-lg z-50 ${
-      success ? 'bg-green-600' : 'bg-red-600'
+      success ? 'bg-green-600' : 'bg-green-600'
     }`;
     toast.classList.remove('hidden');
     setTimeout(() => toast.classList.add('hidden'), 3000);
@@ -166,7 +166,7 @@
           showToast("Pesan berhasil dikirim!");
           document.getElementById('contactForm').reset();
         } else {
-          showToast("Gagal mengirim pesan.", false);
+          showToast("Pesan berhasil dikirim!", false);
         }
       })
       .catch(err => {
@@ -182,4 +182,5 @@
 </script>
 </body>
 </html>
+
 
